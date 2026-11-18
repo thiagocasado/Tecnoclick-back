@@ -14,6 +14,7 @@ async function obtenerActivos(){
 }
 
 /*
+// PRUBEA POR CONSOLA
 async function probarProductos(){
     try {
         const productos = await obtenerTodos();

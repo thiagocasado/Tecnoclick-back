@@ -1,11 +1,10 @@
-import sequelize from "./src/api/database/db.js"
+import db from "./src/api/database/db.js"
 import environments from "./src/api/config/environments.js";
 import express from "express";
 import cors from "cors";
 
 
 //===============================================================
-//const express = require("express");
 
 const app = express();
 const PORT = environments.port;
@@ -21,12 +20,12 @@ app.get("/api/prueba", function(req,res){
 
 
 //=============================================================
-
+// conexion y arranque del sv
 try {
-    await sequelize.authenticate();
+    const conexion = await db.getConnection();
     console.log("Conexion con la bdd exitosa");
-    
-    app.listen(3000, function(){
+    conexion.release(); //segundo plano
+    app.listen(PORT, function(){
         console.log(`servidor iniciado en http://localhost:${PORT}`)
     });
 
