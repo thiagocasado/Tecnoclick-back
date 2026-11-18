@@ -1,9 +1,9 @@
 
-import mysql from "mysql2,promise";
+import mysql from "mysql2/promise";
 import environments from "../config/environments.js";
 
 const {database} = environments;
-const db = mysql.createpool({
+const db = mysql.createPool({
     host: database.host,
     user: database.user,
     password: database.password,
