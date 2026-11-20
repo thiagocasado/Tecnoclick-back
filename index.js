@@ -2,7 +2,7 @@ import db from "./src/api/database/db.js"
 import environments from "./src/api/config/environments.js";
 import express from "express";
 import cors from "cors";
-
+import productosRoutes from "./src/api/routes/productosRoutes.js";
 
 //===============================================================
 
@@ -11,7 +11,7 @@ const PORT = environments.port;
 
 app.use(cors());
 app.use(express.json()); //middleware
-
+app.use("/api/productos",productosRoutes);
 app.get("/api/prueba", function(req,res){
     res.json({
         mensaje: "Backend de Technoclick funcionando"
